@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniTeX Global - Transporte Ejecutivo Premium | Aeropuerto</title>
+    <meta name="description" content="Servicio de transporte ejecutivo especializado en traslados aeropuerto. Tarifas fijas, sin surge pricing. Tecnología Uber + servicio premium. Reservas 24/7.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --gold-color: #d4af37;
+            --text-light: #f1f1f1;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+            color: var(--text-light);
+            padding: 120px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold-color);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--gold-color);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Diferenciadores Section */
+        .diferenciadores {
+            background: #f8f9fa;
+            padding: 60px 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .diferenciadores-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .diferenciador-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .diferenciador-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .diferenciador-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .diferenciador-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 60px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold-color);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Tech Features */
+        .tech-features {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--text-light);
+            padding: 60px 2rem;
+        }
+
+        .tech-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tech-item h3 {
+            color: var(--gold-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Fleet Section */
+        .fleet {
+            padding: 60px 2rem;
+            background: #f8f9fa;
+        }
+
+        .fleet-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .fleet-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .fleet-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .fleet-body {
+            padding: 1.5rem;
+        }
+
+        .fleet-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .fleet-body li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fleet-body li:before {
+            content: "✓ ";
+            color: var(--gold-color);
+            font-weight: bold;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 2rem;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--gold-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-color);
+        }
+
+        .submit-button {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .contact-item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">InfiniTeX Global</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#diferenciadores">Diferenciadores</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#flota">Flota</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>🚗 Transporte Ejecutivo de Clase Mundial</h1>
+        <p>Tecnología moderna + Servicio premium. Tarifas FIJAS sin surge pricing. Especialistas en traslados aeropuerto con monitoreo de vuelos en tiempo real.</p>
+        <a href="#contacto" class="cta-button">Reservar Ahora 24/7</a>
+    </section>
+
+    <!-- Diferenciadores vs Uber -->
+    <section id="diferenciadores" class="diferenciadores">
+        <h2 class="section-title">Por Qué Somos Diferentes</h2>
+        <p class="section-subtitle">No somos otro Uber. Somos tu partner de transporte ejecutivo.</p>
+
+        <div class="diferenciadores-grid">
+            <div class="diferenciador-card">
+                <div class="diferenciador-icon">💰</div>
+                <h3>Precios Fijos Predecibles</h3>
+                <p><strong>Uber:</strong> Surge pricing variable<br>
+                <strong>Nosotros:</strong> ✅ Tarifa fija garantizada sin sorpresas. Conoces el precio exacto antes de reservar.</p>
+            </div>
+
+            <div class="diferenciador-card">
+                <div class="diferenciador-icon">✈️</div>
+                <h3>Monitoreo de Vuelos</h3>
+                <p><strong>Uber:</strong> No integrado<br>
+                <strong>Nosotros:</strong> ✅ Seguimiento automático de vuelos. Ajuste en tiempo real por retrasos.</p>
+            </div>
+
+            <div class="diferenciador-card">
+                <div class="diferenciador-icon">👔</div>
+                <h3>Servicio Premium</h3>
+                <p><strong>Uber:</strong> Servicio estándar<br>
+                <strong>Nosotros:</strong> ✅ Conductores certificados, bilingües, dress code profesional.</p>
+            </div>
+
+            <div class="diferenciador-card">
+                <div class="diferenciador-icon">📅</div>
+                <h3>Reservas Anticipadas</h3>
+                <p><strong>Uber:</strong> Limitado<br>
+                <strong>Nosotros:</strong> ✅ Reserva con 24-48h de anticipación garantizada.</p>
+            </div>
+
+            <div class="diferenciador-card">
+                <div class="diferenciador-icon">🏢</div>
+                <h3>Facturación B2B</h3>
+                <p><strong>Uber:</strong> Básico<br>
+                <strong>Nosotros:</strong> ✅ Dashboard corporativo + reportes mensuales para empresas.</p>
+            </div>
+
+            <div class="diferenciador-card">
+                <div class="diferenciador-icon">🎯</div>
+                <h3>Meet & Greet</h3>
+                <p><strong>Uber:</strong> No disponible<br>
+                <strong>Nosotros:</strong> ✅ Recepción en terminal + asistencia con equipaje incluida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Features -->
+    <section class="tech-features">
+        <h2 class="section-title" style="color: var(--gold-color);">Tecnología de Punta</h2>
+        <p class="section-subtitle" style="color: var(--text-light);">Stack tecnológico empresarial para máxima confiabilidad</p>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3>📱 Apps Nativas</h3>
+                <p>React Native iOS + Android para experiencia fluida</p>
+            </div>
+
+            <div class="tech-item">
+                <h3>🗺️ Tracking Real-Time</h3>
+                <p>WebSockets + Firebase GPS para seguimiento en vivo</p>
+            </div>
+
+            <div class="tech-item">
+                <h3>💳 Pagos Seguros</h3>
+                <p>Integración Stripe con split payments automático</p>
+            </div>
+
+            <div class="tech-item">
+                <h3>🤖 Matching Inteligente</h3>
+                <p>Algoritmo optimizado: proximidad + rating + dirección</p>
+            </div>
+
+            <div class="tech-item">
+                <h3>🔐 Máxima Seguridad</h3>
+                <p>JWT tokens + SSL/TLS + bcrypt encryption</p>
+            </div>
+
+            <div class="tech-item">
+                <h3>☁️ Infraestructura Cloud</h3>
+                <p>Supabase + Redis + Microservicios escalables</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Transporte Corporativo</h3>
+                <p>Servicio dedicado para empresas con tarifas preferenciales. Gestión de flotas y reportes mensuales detallados.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">✈️</div>
+                <h3>Traslados Aeropuerto</h3>
+                <p>Recepción personalizada con señalización. Monitoreo de vuelos en tiempo real y salas VIP disponibles.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Por Hora / Disponibilidad</h3>
+                <p>Chofer a su disposición por el tiempo que necesite. Ideal para juntas múltiples y eventos corporativos.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>App de Reservas</h3>
+                <p>Plataforma tecnológica para reservar, rastrear y gestionar sus servicios desde cualquier dispositivo.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Seguridad Premium</h3>
+                <p>Choferes certificados con background check completo. Seguro de responsabilidad civil ampliado.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎊</div>
+                <h3>Eventos Especiales</h3>
+                <p>Bodas, graduaciones, conciertos y eventos corporativos. Coordinación logística completa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet -->
+    <section id="flota" class="fleet">
+        <h2 class="section-title">Nuestra Flota Premium</h2>
+        <p class="section-subtitle">Vehículos de lujo equipados con amenidades ejecutivas</p>
+
+        <div class="fleet-grid">
+            <div class="fleet-card">
+                <div class="fleet-header">
+                    <div style="font-size: 3rem;">🚙</div>
+                    <h3>Sedán Ejecutivo</h3>
+                    <p>Mercedes-Benz Clase E, BMW Serie 5</p>
+                </div>
+                <div class="fleet-body">
+                    <ul>
+                        <li>Capacidad: 3 pasajeros</li>
+                        <li>Wi-Fi y cargadores USB-C</li>
+                        <li>Asientos de cuero climatizados</li>
+                        <li>Agua embotellada premium</li>
+                        <li>Periódicos internacionales</li>
+                        <li>Sonido premium</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fleet-card">
+                <div class="fleet-header">
+                    <div style="font-size: 3rem;">🚗</div>
+                    <h3>SUV de Lujo</h3>
+                    <p>Cadillac Escalade, Range Rover</p>
+                </div>
+                <div class="fleet-body">
+                    <ul>
+                        <li>Capacidad: 6 pasajeros</li>
+                        <li>Amplio espacio para equipaje</li>
+                        <li>Sistema de entretenimiento</li>
+                        <li>Privacidad con cristales polarizados</li>
+                        <li>Climatización dual</li>
+                        <li>Conectividad Bluetooth</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fleet-card">
+                <div class="fleet-header">
+                    <div style="font-size: 3rem;">🚐</div>
+                    <h3>Van Ejecutiva</h3>
+                    <p>Mercedes Sprinter VIP</p>
+                </div>
+                <div class="fleet-body">
+                    <ul>
+                        <li>Capacidad: 14 pasajeros</li>
+                        <li>Configuración tipo sala de juntas</li>
+                        <li>Pantallas individuales</li>
+                        <li>Ideal para equipos corporativos</li>
+                        <li>Mesa central retráctil</li>
+                        <li>Barra de bebidas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>10K+</h3>
+                <p>Servicios Completados</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Satisfacción Cliente</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Disponibilidad</p>
+            </div>
+            <div class="stat-item">
+                <h3>5⭐</h3>
+                <p>Calificación Promedio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto" class="contact">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">Solicita una cotización personalizada</p>
+
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Corporativo *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="detalles">Detalles del Servicio *</label>
+                <textarea id="detalles" name="detalles" rows="5" required placeholder="Ruta, fecha, tipo de servicio..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Enviar Solicitud</button>
+        </form>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-item-icon">📞</div>
+                <h3>Teléfono</h3>
+                <p>+1 (555) 123-4567</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item-icon">📧</div>
+                <h3>Email</h3>
+                <p>contacto@infinitexglobal.com</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item-icon">💬</div>
+                <h3>WhatsApp</h3>
+                <p>+1 (555) 987-6543</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item-icon">📍</div>
+                <h3>Cobertura</h3>
+                <p>Servicio 24/7<br>Toda la ciudad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#diferenciadores">Diferenciadores</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#flota">Flota</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <p>&copy; 2025 InfiniTeX Global. Todos los derechos reservados.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            Tecnología: React Native • Node.js • Supabase • Stripe • Google Maps<br>
+            Stack Microservicios • WebSockets Real-Time • JWT Security
+        </p>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu solicitud! Nos pondremos en contacto contigo en las próximas 24 horas.');
+            this.reset();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
